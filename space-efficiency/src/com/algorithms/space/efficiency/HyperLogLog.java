@@ -5,7 +5,7 @@ import java.util.Set;
 
 /*This Class covers the implementation of HyperLogLog algorithm which is
  * very much used for space efficiency with minimal time
- * Please refer more details on Google paper
+ * Please refer more details on Google paper 
  * 
  * https://stefanheule.com/papers/edbt13-hyperloglog.pdf
  * 
@@ -39,11 +39,12 @@ public class HyperLogLog {
     public static Long doHyperLogLog(int p, Set<Long> s) {
         // Initialize M Registers
         int m = getMSize(p);
-        doAggregation(p, initializeMRegisters(m), s);
+        int[] mRegFilled = doAggregation(p, initializeMRegisters(m), s);
+        int E = resultComputation(m, mRegFilled);
         return null;
     }
-    
-    public static void doAggregation(int p, int[] mRegisters, Set<Long> s) {
+    		
+    public static int[] doAggregation(int p, int[] mRegisters, Set<Long> s) {
         String h, sub;
         int idx, w, subIndex;
         for (Long l : s) {
@@ -54,6 +55,24 @@ public class HyperLogLog {
             w = ((subIndex == -1) ? 0 : subIndex + 1);
             mRegisters[idx] = (mRegisters[idx] > w ? mRegisters[idx] : w);
         }
+        return mRegisters;
+    }
+    
+    public static int resultComputation(int m,int[] mRegisters){
+    	int mSquare = (int) Math.pow(m, 2);
+    	int calcFirstpart = mSquare * doAlphaMcalculation(m);
+    	int summation = 0;
+    	for(int i=0;i<m-1;i++){
+    		summation+=Math.pow(2,-(mRegisters[i]));
+    	}
+    	int summationPowerminusone = (int) Math.pow(summation, -1); 
+		return calcFirstpart * summationPowerminusone;
+    	
+    }
+    
+    public static int doAlphaMcalculation(int m){
+    	// for m ≥ 128.
+    	return 	(int) (0.7213/(1 + 1.079/m));
     }
 
     public static String doHashing(Long l) {
