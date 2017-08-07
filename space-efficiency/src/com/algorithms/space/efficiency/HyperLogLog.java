@@ -3,6 +3,14 @@ package com.algorithms.space.efficiency;
 import java.util.HashSet;
 import java.util.Set;
 
+/*This Class covers the implementation of HyperLogLog algorithm which is
+ * very much used for space efficiency with minimal time
+ * Please refer more details on Google paper
+ * 
+ * https://stefanheule.com/papers/edbt13-hyperloglog.pdf
+ * 
+ */
+
 public class HyperLogLog {
 	 // Let h : D → {0, 1}^32
     // Let m = 2^p with p ∈ [4..16].
