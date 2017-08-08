@@ -38,9 +38,9 @@ public class HyperLogLog {
 
     public static Long doHyperLogLog(int p, Set<Long> s) {
         // Initialize M Registers
-        int m = getMSize(p);
+        int m = getMSize(p),zerosCount = 0;        
         int[] mRegFilled = doAggregation(p, initializeMRegisters(m), s);
-        int E = resultComputation(m, mRegFilled);
+        int E = resultComputation(m, mRegFilled,zerosCount);
         return null;
     }
     		
@@ -58,16 +58,32 @@ public class HyperLogLog {
         return mRegisters;
     }
     
-    public static int resultComputation(int m,int[] mRegisters){
+    public static int resultComputation(int m,int[] mRegisters,int zerosCount){
     	int mSquare = (int) Math.pow(m, 2);
     	int calcFirstpart = mSquare * doAlphaMcalculation(m);
-    	int summation = 0;
+    	int summation = 0,counter;
     	for(int i=0;i<m-1;i++){
-    		summation+=Math.pow(2,-(mRegisters[i]));
+    		counter = mRegisters[i];
+    		if(counter == 0){
+    			zerosCount++;
+    		}
+    		summation+=Math.pow(2,-(counter));
     	}
     	int summationPowerminusone = (int) Math.pow(summation, -1); 
 		return calcFirstpart * summationPowerminusone;
     	
+    }
+    
+    public static int doSmallCardinationCorrection(int E,int m,int[] mRegisters,int zerosCount){
+    	// calculate the numer of registers in array
+    	int V = m - zerosCount;
+    	if(V != 0){
+    		//need to check
+    		E = (int) linearCounting(m, V);
+    	}else{
+    		
+    	}
+		return E;
     }
     
     public static int doAlphaMcalculation(int m){
