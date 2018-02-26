@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * https://www.hackerrank.com/challenges/waiter/problem
+ * 
+ * 
+ * @author jawahar
+ *
+ */
 public class Waiter {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -13,40 +19,38 @@ public class Waiter {
 		int q = in.nextInt();
 		int iterationStart = 0;
 		Stack<Integer> bStack = new Stack<Integer>();
-		Stack<Integer> aStack = new Stack<Integer>();		
-        List<Stack> stackList = new ArrayList();
+		Stack<Integer> aStack = new Stack<Integer>();
+		List<Stack> stackList = new ArrayList();
 		for (int number_i = 0; number_i < n; number_i++) {
 			aStack.push(in.nextInt());
-		}        
+		}
 		for (int i = 0; i < q; i++) {
-			aStack = perform(aStack,stackList, i+1);		
+			aStack = perform(aStack, stackList, i + 1);
 		}
 		stackList.add(aStack);
-        for(Stack stack:stackList){
-            for (int i = stack.size()-1;i>=0; i--) {
-			     System.out.println(stack.get(i));
-		     }    
-        }
-        ConcurrentHashMap<K, V>
-        HashTable
+		for (Stack stack : stackList) {
+			for (int i = stack.size() - 1; i >= 0; i--) {
+				System.out.println(stack.get(i));
+			}
+		}
 	}
 
-	public static Stack<Integer>  perform(Stack<Integer> aStack,List<Stack> listStack, int iterationStart) {
-		Stack<Integer> bkupStack = new Stack<Integer>();		
+	public static Stack<Integer> perform(Stack<Integer> aStack, List<Stack> listStack, int iterationStart) {
+		Stack<Integer> bkupStack = new Stack<Integer>();
 		Stack<Integer> bStack = new Stack<Integer>();
-		for (int j = aStack.size()-1; j >=0; j--) {
+		for (int j = aStack.size() - 1; j >= 0; j--) {
 			int prime = nthPrime(iterationStart);
 			int val = aStack.get(j);
 			if (val % prime == 0) {
 				bStack.add(val);
 			} else {
 				bkupStack.push(aStack.get(j));
-			}			
-		}	
-		listStack.add(bStack);	
-        return bkupStack;
+			}
+		}
+		listStack.add(bStack);
+		return bkupStack;
 	}
-	
+
 	public static int nthPrime(int n) {
 		int candidate, count;
 		for (candidate = 2, count = 0; count < n; ++candidate) {
