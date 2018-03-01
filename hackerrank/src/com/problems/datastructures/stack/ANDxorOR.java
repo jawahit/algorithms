@@ -19,7 +19,7 @@ public class ANDxorOR {
 			A[i] = in.nextInt();
 		}
 		System.out.println(doIteration(A));
-		//System.out.println(doAndXorOr(5, 11)); 
+		// System.out.println(doAndXorOr(5, 11));
 	}
 
 	public static int doAndXorOr(int m1, int m2) {
@@ -30,8 +30,8 @@ public class ANDxorOR {
 		Stack<Integer> minPairStack = new Stack<>();
 		int max = doAndXorOr(A[0], A[1]);
 		for (int i = 0; i <= A.length - 1; i++) {
+			int indexVal = A[i];
 			while (!minPairStack.isEmpty()) {
-				int indexVal = A[i];
 				int top = minPairStack.peek();
 				int sI = doAndXorOr(top, indexVal);
 				if (sI > max) {
@@ -43,7 +43,7 @@ public class ANDxorOR {
 					break;
 				}
 			}
-			minPairStack.push(A[i]);
+			minPairStack.push(indexVal);
 		}
 		return max;
 	}

@@ -67,6 +67,11 @@ public class PoisonousPlantsProblemBestTime {
 				}
 			}
 		}
+		
+		for(Integer i : remainingPlants){
+			System.out.println(i);
+		}
+		
 		return daysCount;
 	}
 
