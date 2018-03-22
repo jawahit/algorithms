@@ -13,7 +13,7 @@ import java.util.Stack;
  * @author jawahar
  *
  */
-public class PoisonousPlantsProblemBestTime {
+public class PoisonousPlants {
 
 	static Stack<Integer> poisonousPlants(Stack<Integer> plantsStack) {
 		Stack<Integer> remainingPlants = new Stack<Integer>();			
