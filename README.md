@@ -36,7 +36,7 @@
 
 # Special Algorithms - used on jobs
 
-  This repo will covers what ever the critical/normal algorithms i have come across in my life. 
+  This repo will covers what ever the critical/special/different algorithms used on my career
 
     1.HyperLogLog(I)
 
