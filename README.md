@@ -8,7 +8,7 @@
     NOTE: NS - NOT STARTED, C - COMPLETED, I - INPROGRESS
     
     Sections Covered in HackerRank on Datastructures:
-      1.Stacks (C)
+      1.Stacks (C)
       2.LinkedList (I)
       3.Queue (NS)
       4.Arrays (NS)
