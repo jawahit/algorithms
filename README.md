@@ -34,9 +34,9 @@
       12.NP Complete(NS)
       
 
-# Algorithms
+# Special Algorithms - used on jobs
 
   This repo will covers what ever the critical/normal algorithms i have come across in my life. 
 
-    1.HyperLogLog(in progress)
+    1.HyperLogLog(I)
 
