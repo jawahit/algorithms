@@ -7,7 +7,7 @@
     
     NOTE: NS - NOT STARTED, C - COMPLETED, I - INPROGRESS
     
-    Sections Covered in HackerRank on Datastructures:
+    Sections Covered in HackerRank on Datastructures:
       1.Stacks (C)
       2.LinkedList (I)
       3.Queue (NS)
@@ -32,8 +32,7 @@
       10.Recursion(NS)
       11.Game Theory(NS)
       12.NP Complete(NS)
-
-
+      
 
 # Algorithms
 
