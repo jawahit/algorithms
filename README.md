@@ -9,8 +9,8 @@
     
     Sections Covered in HackerRank on Datastructures:
       1.Stacks (C)
-      2.LinkedList (I)
-      3.Queue (NS)
+      2.LinkedList (C)
+      3.Queue (I)
       4.Arrays (NS)
       5.Trees (NS)
       6.Balanced Trees(NS)
