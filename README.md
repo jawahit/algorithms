@@ -5,14 +5,14 @@
     
     https://www.hackerrank.com/dashboard
     
-    NOTE: NS - NOT STARTED, C - COMPLETED, I - INPROGRESS
+    NOTE: NS - NOT STARTED, C - COMPLETED, I - INPROGRESS, OH - ON HOLD
     
     Sections Covered in HackerRank on Datastructures:
       1.Stacks (C)
       2.LinkedList (C)
-      3.Queue (I)
+      3.Queue (OH)
       4.Arrays (NS)
-      5.Trees (NS)
+      5.Trees (I)
       6.Balanced Trees(NS)
       7.Heap(NS)
       8.Disjoint Set(NS)
