@@ -1,7 +1,7 @@
 # DataStructures & Algorithms
     
-   This repo covers the Basics of Datastructures & Algorithms solved on my own and learned.
-    For that i have learned some of the basics and started solving HackerRank Dashboard.
+   This repo covers the Basics of Datastructures & Algorithms solved on my own and i have learned.
+    Here you can find the sections i have started solving on HackerRank website.
     
     https://www.hackerrank.com/dashboard
     
@@ -10,8 +10,8 @@
     Sections Covered in HackerRank on Datastructures:
       1.Stacks (C)
       2.LinkedList (C)
-      3.Queue (OH)
-      4.Arrays (NS)
+      3.Queue (OH - 20% C)
+      4.Arrays (OH - 90% C)
       5.Trees (I)
       6.Balanced Trees(NS)
       7.Heap(NS)
