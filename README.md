@@ -33,6 +33,26 @@
       11.Game Theory(NS)
       12.NP Complete(NS)
       
+# Algorithms Problem Solving - Princeton University
+
+   In this sections i have started solving the problems/assignments from princeton university it has two parts Algorithm1, Algorithm2 and week by week schedule
+   
+   #Algorithm 1 
+   
+   Week 1: 
+   Union Find
+      1.assignment
+      2.creative problems
+      3.excercises
+      4.web excercises
+      
+   Analysis of Algorithms
+      
+   Week 2: Stacks and Queues
+   
+   #Algorithm 2
+   
+      
 
 # Special Algorithms - used on jobs
 
