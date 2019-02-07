@@ -40,13 +40,13 @@
        #Algorithm 1 
 
        Week 1: 
-       Union Find
+       # Union Find
           1.assignment
           2.creative problems
           3.excercises
           4.web excercises
 
-       Analysis of Algorithms
+       # Analysis of Algorithms
 
        Week 2: Stacks and Queues
 
