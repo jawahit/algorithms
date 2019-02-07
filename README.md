@@ -1,9 +1,8 @@
-# DataStructures & Algorithms
+ This repo covers the Basics of Datastructures, Algorithms & Problems solved on my own and learned.
+
+# DataStructures & Algorithms - HackerRank
     
-   This repo covers the Basics of Datastructures & Algorithms solved on my own and i have learned.
-    Here you can find the sections i have started solving on HackerRank website.
-    
-    https://www.hackerrank.com/dashboard
+    https://www.hackerrank.com
     
     NOTE: NS - NOT STARTED, C - COMPLETED, I - INPROGRESS, OH - ON HOLD
     
