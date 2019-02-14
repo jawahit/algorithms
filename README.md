@@ -38,7 +38,7 @@
    
        -> Algorithm 1 
 
-       Week 1: 
+       Week 1: (C)
        Union Find
           1.assignment
           2.creative problems
