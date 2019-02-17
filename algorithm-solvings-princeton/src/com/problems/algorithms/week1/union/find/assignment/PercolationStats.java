@@ -3,6 +3,8 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
+import edu.princeton.cs.algs4.Stopwatch;
+
 
 /**
  * The {@code PercolationStats} class produces the statistical report for
@@ -103,12 +105,17 @@ public class PercolationStats {
 	}
 
 	public static void main(String[] args) {
-		int n = StdIn.readInt();
-		int t = StdIn.readInt();
-		PercolationStats stats = new PercolationStats(n, t);
-		StdOut.println("mean\t\t\t = " + stats.mean());
-		StdOut.println("stddev\t\t\t = " + stats.stddev());
-		StdOut.println("95% confidence interval  = [" + stats.confidenceLo() + ", " + stats.confidenceHi() + "]");
+		// int n = StdIn.readInt();
+		// int t = StdIn.readInt();
+		int[] input = { 100, 200};
+		for(Integer m : input) {
+			Stopwatch stopwatch =  new Stopwatch();
+			PercolationStats stats = new PercolationStats(m, 1);
+			StdOut.println("mean\t\t\t = " + stats.mean());
+			StdOut.println("stddev\t\t\t = " + stats.stddev());
+			StdOut.println("95% confidence interval  = [" + stats.confidenceLo() + ", " + stats.confidenceHi() + "]");
+			StdOut.println("Input : " + m + " Total Elapsed time : " + stopwatch.elapsedTime());
+		}
 	}
 
 }
