@@ -3,12 +3,13 @@
  */
 package com.problems.algorithms.week2.queues;
 
+import java.util.Iterator;
 
 /**
  * @author Thangaraj Jawahar
  *
  */
-public class QueueUsingLinkedList<T> {
+public class QueueUsingLinkedList<T> implements Iterable<T> {
 	
 	LinkedList<T> list;
 
@@ -26,6 +27,11 @@ public class QueueUsingLinkedList<T> {
 
 	public boolean isEmpty() {
 		return list.size() == 0;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return list.iterator();
 	}
 
 }

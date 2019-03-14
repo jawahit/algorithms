@@ -49,6 +49,10 @@ public class QueuesOfStringClient {
 		while(!ll.isEmpty()) {	
 			System.out.println(ll.deQueue());
 		}
+		// for iterator Example
+		for(String s: ll) {
+			System.out.println(s);
+		}
 		
 		
 		System.out.println("-------- using linked list integer -----------");

@@ -3,11 +3,13 @@
  */
 package com.problems.algorithms.week2.stacks;
 
+import java.util.Iterator;
+
 /**
  * @author Thangaraj Jawahar
  *
  */
-class LinkedList<T> {
+class LinkedList<T> implements Iterable<T> {
 	Node head;
 	int size;
 
@@ -46,13 +48,38 @@ class LinkedList<T> {
 	public int size() {
 		return size;
 	}
-}
 
-class Node<T> {
-	T data;
-	Node next;
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return new ListIterator();
+	}
 
-	public Node(T t) {
-		this.data = t;
+	private class ListIterator implements Iterator<T> {
+
+		private Node current = head;
+
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return current != null;
+		}
+
+		@Override
+		public T next() {
+			T t = (T) current.data;
+			current = current.next;
+			return t;
+		}
+
+	}
+
+	class Node<T> {
+		T data;
+		Node next;
+
+		public Node(T t) {
+			this.data = t;
+		}
 	}
 }

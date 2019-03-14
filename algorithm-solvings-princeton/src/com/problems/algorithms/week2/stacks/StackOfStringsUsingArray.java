@@ -3,13 +3,15 @@
  */
 package com.problems.algorithms.week2.stacks;
 
+import java.util.Iterator;
+
 /**
  * warmup api for Stack using Array
  * 
  * @author Thangaraj Jawahar
  *
  */
-public class StackOfStringsUsingArray {
+public class StackOfStringsUsingArray<T> implements Iterable<T> {
 	String[] arr;
 	int currentIndex;
 
@@ -58,5 +60,30 @@ public class StackOfStringsUsingArray {
 
 	private int size() {
 		return currentIndex;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return new ArrayReverseIterator();
+	}
+	
+	private class ArrayReverseIterator implements Iterator<T> {
+
+		private int index = currentIndex;
+
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return index > 0;
+		}
+
+
+		@Override
+		public T next() {
+			// TODO Auto-generated method stub
+			return  (T) arr[--index];
+		}
+		
 	}
 }
