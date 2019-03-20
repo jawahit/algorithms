@@ -1,4 +1,4 @@
- This repo covers the Datastructures, Algorithms & Problems solved on my own and learned.
+ This repo covers the Datastructures, Algorithms & Problems solved on my own and learned.Now actively solving princeton university alogrithms weekly assignments from Section2 once completed will switch back to hackerrank problems
 
 # DataStructures & Algorithms - HackerRank
     
