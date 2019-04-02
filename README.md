@@ -1,8 +1,11 @@
- This repo covers the Datastructures, Algorithms & Problems solved on my own and learned.
+ This repo covers the Datastructures, Algorithms & Problems solved on my own and learned.Now actively solving princeton university alogrithms weekly assignments from Section2 once completed will switch back to hackerrank problems
 
 # DataStructures & Algorithms - HackerRank
     
-    https://www.hackerrank.com
+    https://www.hackerrank.com/at_jawahar
+    
+    Badge : Gold
+    Stars : 5
     
     NOTE: NS - NOT STARTED, C - COMPLETED, I - INPROGRESS, OH - ON HOLD
     
@@ -10,7 +13,7 @@
       1.Stacks (C)
       2.LinkedList (C)
       3.Queue (OH - 20% C)
-      4.Arrays (OH - 90% C)
+      4.Arrays (OH - 83% C)
       5.Trees (I)
       6.Balanced Trees(NS)
       7.Heap(NS)
@@ -47,7 +50,13 @@
 
        Analysis of Algorithms
 
-       Week 2: Stacks and Queues
+       Week 2: (C)
+       Stacks and Queues
+          1.assignment
+          2.problems
+       
+       Week 3: (I)
+       Sorting 
 
        -> Algorithm 2
    
