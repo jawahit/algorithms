@@ -15,6 +15,8 @@ public class RecursionExamples {
 	/**
 	 * @param args
 	 */
+	static int count = 0;
+
 	public static void main(String[] args) {
 		System.out.println("Recursive print of Array of Array of same kind : ");
 		recursivePrint();
@@ -22,7 +24,9 @@ public class RecursionExamples {
 		System.out.println("Factorial of 5 : " + factorial(5));
 		System.out.println("Fibonacci nth 5 :" + fibonacci(5));
 		String s = "madam";
-		System.out.println("is string palindrome : " + isPalindrome(s, 0, s.length()-1));
+		System.out.println("is string palindrome : " + isPalindrome(s, 0, s.length() - 1));
+		System.out.println("Greatest Common Factor / GCD " + gcd(8, 12));
+		System.out.println("Method Execute count: " + count);
 
 	}
 
@@ -98,7 +102,7 @@ public class RecursionExamples {
 	public static int factorial(int n) {
 		if (n <= 1)
 			return 1;
-		return n * factorial(n - 1);
+		return n * factorial(--n);
 	}
 
 	/**
@@ -117,6 +121,7 @@ public class RecursionExamples {
 
 	/**
 	 * is palindrome ?
+	 * 
 	 * @param s
 	 * @param fronIndex
 	 * @param backIndex
@@ -127,9 +132,24 @@ public class RecursionExamples {
 			return true;
 		if (s.charAt(fronIndex) == s.charAt(backIndex)) {
 			return isPalindrome(s, ++fronIndex, --backIndex);
-		} else {
-			return false;
 		}
+		return false;
+	}
+
+	/**
+	 * Greatest common divisor (gcd) for the two numbers always pass m - bigger
+	 * value n - smaller value so that method execution count will be less
+	 * 
+	 * @param m
+	 * @param n
+	 * @return
+	 */
+	public static int gcd(int m, int n) {
+		count++; // just to check how many times method got executed
+		if (m % n == 0) {
+			return n;
+		}
+		return gcd(n, m % n);
 	}
 
 	private static class Company {
