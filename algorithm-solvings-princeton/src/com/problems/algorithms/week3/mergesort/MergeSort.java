@@ -43,8 +43,7 @@ public class MergeSort {
 	}
 
 	private static void merge(Object[] src, Object[] dest, int start, int mid, int end) {
-		// copy src to dest
-		System.arraycopy(src, 0, dest, 0, src.length);
+		copyArray(src, dest, start, end);
 		for (int startPoint = start, midPoint = mid, destIndex = startPoint; destIndex <= end; destIndex++) {
 			if (startPoint >= mid
 					|| (midPoint <= end && ((Comparable) dest[startPoint]).compareTo(dest[midPoint]) > 0)) {
@@ -54,6 +53,13 @@ public class MergeSort {
 			}
 		}
 	}
+	
+	private static void copyArray(Object[] src, Object[] dest, int start, int end) {
+		for(int i = start; i<= end; i++) {
+			dest[i] = src[i];
+		}
+	}
+	
 
 	// if it's already sorted just return copy the source to
 //			if (((Comparable) src[mid]).compareTo(src[mid - 1]) >= 0) {
