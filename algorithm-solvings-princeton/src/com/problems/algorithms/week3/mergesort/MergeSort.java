@@ -20,10 +20,10 @@ public class MergeSort {
 	}
 
 	private static void divideAndConquer(Object[] src, Object[] dest, int start, int end) {
-		int mid = (start + end) >>> 1;
 		if (start == end) {
 			return;
 		}
+		int mid = (start + end) >>> 1;
 		divideAndConquer(src, dest, start, mid);
 		divideAndConquer(src, dest, mid + 1, end);
 		if (start == mid) {
@@ -91,15 +91,17 @@ public class MergeSort {
 //				"E" };
 		// String[] unsorted = { "31415926535897932384626433832795", "1", "3", "10",
 		// "3", "5"};
+		System.out.println("Un Sorted: ");
 		String[] unsorted = { "zebra", "apple", "orange", "mango", "coconut", "gauva" };
-		System.out.println(unsorted);
-		sort(unsorted);
-		System.out.println(unsorted);
 		for (String i : unsorted) {
 			System.out.print(i + " ");
 		}
-
-		System.out.println("1".compareTo("4"));
+		sort(unsorted);
+		System.out.println();
+		System.out.println("Sorted: ");
+		for (String i : unsorted) {
+			System.out.print(i + " ");
+		}
 	}
 
 }
