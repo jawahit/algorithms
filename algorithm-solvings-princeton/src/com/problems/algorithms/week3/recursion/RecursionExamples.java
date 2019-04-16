@@ -27,6 +27,7 @@ public class RecursionExamples {
 		System.out.println("is string palindrome : " + isPalindrome(s, 0, s.length() - 1));
 		System.out.println("Greatest Common Factor / GCD " + gcd(8, 12));
 		System.out.println("Method Execute count: " + count);
+		System.out.println("Log 2 base value :" + log2BaseApproxValue(24, 2));
 
 	}
 
@@ -150,6 +151,27 @@ public class RecursionExamples {
 			return n;
 		}
 		return gcd(n, m % n);
+	}
+
+	/**
+	 * 
+	 * this is the approximate value of log since Log to base of x = base ^ y if we
+	 * find the y value exactly only we can get the log value so this is just
+	 * approximation if you see the decimals it is not the exacte value
+	 * 
+	 * @param m
+	 * @param b
+	 * @return
+	 */
+	public static double log2BaseApproxValue(double m, int b) {
+		return getLog2Value(m, b) - 1;
+	}
+
+	public static double getLog2Value(double m, int b) {
+		if (m <= 1) {
+			return m;
+		}
+		return 1 + getLog2Value(m / b, b);
 	}
 
 	private static class Company {

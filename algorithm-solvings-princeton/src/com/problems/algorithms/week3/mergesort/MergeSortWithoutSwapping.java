@@ -23,14 +23,13 @@ package com.problems.algorithms.week3.mergesort;
  * @author Thangaraj Jawahar
  *
  */
-public class MergeSort {
+public class MergeSortWithoutSwapping {
 
 	static int count = 0;
 
 	public static void sort(Object[] c) {
 		Object[] dest = new Object[c.length];
-		copyArray(c, dest, 0, c.length -1);
-		divideAndConquer(dest, c, 0, c.length - 1);
+		divideAndConquer(c, dest, 0, c.length - 1);
 	}
 
 	private static void divideAndConquer(Object[] src, Object[] dest, int start, int end) {
@@ -38,44 +37,43 @@ public class MergeSort {
 			return;
 		}
 		int mid = (start + end) >>> 1;
-		// mind twisting part :)
-		divideAndConquer(dest, src, start, mid);
-		divideAndConquer(dest, src, mid + 1, end);
+		divideAndConquer(src, dest, start, mid);
+		divideAndConquer(src, dest, mid + 1, end);
 		merge(src, dest, start, mid + 1, end);
 	}
 
+	private static void swap(Object[] src, int start, int end) {
+		Object temp = null;
+		if (((Comparable) src[start]).compareTo(src[end]) > 0) {
+			temp = src[start];
+			src[start] = src[end];
+			src[end] = temp;
+		}
+	}
+
 	private static void merge(Object[] src, Object[] dest, int start, int mid, int end) {
+		copyArray(src, dest, start, end);
+		// if it's already sorted just return copy the source to
+		if (((Comparable) src[mid]).compareTo(src[mid - 1]) >= 0) {
+			return;
+		}
 		for (int startPoint = start, midPoint = mid, destIndex = startPoint; destIndex <= end; destIndex++) {
 			count++;
 			if (startPoint >= mid
-					|| (midPoint <= end && ((Comparable) src[startPoint]).compareTo(src[midPoint]) > 0)) {
-				dest[destIndex] = src[midPoint++];
+					|| (midPoint <= end && ((Comparable) dest[startPoint]).compareTo(dest[midPoint]) > 0)) {
+				src[destIndex] = dest[midPoint++];
 			} else {
-				dest[destIndex] = src[startPoint++];
+				src[destIndex] = dest[startPoint++];
 			}
 		}
 	}
 
-	/**
-	 * copy src to dest
-	 * @param src
-	 * @param dest
-	 * @param start
-	 * @param end
-	 */
 	private static void copyArray(Object[] src, Object[] dest, int start, int end) {
 		for (int i = start; i <= end; i++) {
 			dest[i] = src[i];
 		}
 	}
 
-	/**
-	 * to undestand the divide & conquer and state of the variables
-	 * better
-	 * 
-	 * @param start
-	 * @param end
-	 */
 	public static void recursivePrint(int start, int end) {
 		int mid = (start + end) / 2;
 		if (start == end) {
