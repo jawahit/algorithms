@@ -3,6 +3,8 @@
  */
 package com.problems.algorithms.week3.mergesort;
 
+import java.util.Comparator;
+
 /**
  * Merge sort implementation
  * 
@@ -27,10 +29,37 @@ public class MergeSort {
 
 	static int count = 0;
 
-	public static void sort(Object[] c) {
+	public static void sort(Object[] c,Comparator comp) {
 		Object[] dest = new Object[c.length];
 		copyArray(c, dest, 0, c.length -1);
 		divideAndConquer(dest, c, 0, c.length - 1);
+		for (Object i : c) {
+			System.out.print(i + " ");
+		}
+		System.out.println();
+	}
+	
+	private static void divideAndConquerWithComparator(Object[] src, Object[] dest, int start, int end, Comparator comp) {
+		if (start == end) {
+			return;
+		}
+		int mid = (start + end) >>> 1;
+		// mind twisting part :) thanks to Robert Sedgewick for saving array copy time 
+		divideAndConquer(dest, src, start, mid);
+		divideAndConquer(dest, src, mid + 1, end);
+		merge(src, dest, start, mid + 1, end, comp);
+	}
+	
+	private static void merge(Object[] src, Object[] dest, int start, int mid, int end,Comparator comp) {
+		for (int startPoint = start, midPoint = mid, destIndex = startPoint; destIndex <= end; destIndex++) {
+			count++;
+			if (startPoint >= mid
+					|| (midPoint <= end && comp.compare(src[startPoint],(src[midPoint])) > 0)) {
+				dest[destIndex] = src[midPoint++];
+			} else {
+				dest[destIndex] = src[startPoint++];
+			}
+		}
 	}
 
 	private static void divideAndConquer(Object[] src, Object[] dest, int start, int end) {
@@ -38,7 +67,7 @@ public class MergeSort {
 			return;
 		}
 		int mid = (start + end) >>> 1;
-		// mind twisting part :)
+		// mind twisting part :) thanks to Robert Sedgewick for saving array copy time 
 		divideAndConquer(dest, src, start, mid);
 		divideAndConquer(dest, src, mid + 1, end);
 		merge(src, dest, start, mid + 1, end);
@@ -105,7 +134,7 @@ public class MergeSort {
 		for (String i : unsorted) {
 			System.out.print(i + " ");
 		}
-		sort(unsorted);
+		sort(unsorted, null);
 		System.out.println();
 		System.out.println("Sorted: ");
 		for (String i : unsorted) {

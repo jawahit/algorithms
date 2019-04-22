@@ -12,8 +12,8 @@ public class Sample {
 	
 	public static void main(String[] args) {
 
-		int start = 4;
-		int end = 4;
+		int start = 0;
+		int end = 15;
 		int sum = start + end;
 //		System.out.println((start + (end - start)) / 2);
 //		System.out.println(sum >>> 1);
@@ -22,6 +22,8 @@ public class Sample {
 		System.out.println(sum >>> 1);
 		System.out.println(sum/2);
 		recursivePrint(0, 4);
+		System.out.println(Double.NEGATIVE_INFINITY);
+	
 
 	}
 
