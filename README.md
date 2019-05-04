@@ -35,9 +35,9 @@
       11.Game Theory(NS)
       12.NP Complete(NS)
       
-# Algorithms Problem Solving - Princeton University
+# Algorithms1 & Problem Solving - Princeton University
 
-   In this sections i have started solving the problems/assignments from princeton university it has two parts Algorithm1, Algorithm2      and week by week schedule
+   In this sections i have started solving the problems/assignments of week by week schedule from princeton university 
    
        -> Algorithm 1 
 
@@ -77,11 +77,13 @@
        Hash Tables
        
        Symbol Table Applications
-
-       -> Algorithm 2
        
+      
    
       
+# Algorithms2 & Problem Solving - Princeton University (Advanced)
+
+     In this sections i have started solving the problems/assignments of week by week schedule from princeton university
 
 # Special Algorithms - used on jobs
 
