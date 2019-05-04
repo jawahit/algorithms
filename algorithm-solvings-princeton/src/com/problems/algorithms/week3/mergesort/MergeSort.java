@@ -32,11 +32,15 @@ public class MergeSort {
 	public static void sort(Object[] c,Comparator comp) {
 		Object[] dest = new Object[c.length];
 		copyArray(c, dest, 0, c.length -1);
-		divideAndConquer(dest, c, 0, c.length - 1);
-		for (Object i : c) {
-			System.out.print(i + " ");
+		if(comp ==null) {
+			divideAndConquer(dest, c, 0, c.length - 1);			
+		} else {
+			divideAndConquerWithComparator(dest, c, 0, c.length - 1, comp);
 		}
-		System.out.println();
+//		for (Object i : c) {
+//			System.out.print(i + " ");
+//		}
+//		System.out.println();
 	}
 	
 	private static void divideAndConquerWithComparator(Object[] src, Object[] dest, int start, int end, Comparator comp) {
@@ -45,8 +49,8 @@ public class MergeSort {
 		}
 		int mid = (start + end) >>> 1;
 		// mind twisting part :) thanks to Robert Sedgewick for saving array copy time 
-		divideAndConquer(dest, src, start, mid);
-		divideAndConquer(dest, src, mid + 1, end);
+		divideAndConquerWithComparator(dest, src, start, mid,comp);
+		divideAndConquerWithComparator(dest, src, mid + 1, end,comp);
 		merge(src, dest, start, mid + 1, end, comp);
 	}
 	
