@@ -55,10 +55,31 @@
           1.assignment
           2.problems
        
-       Week 3: (I)
-       Sorting 
+       Week 3: (C)
+       Sorting(Insertion Sort,Merge Sort,Quick Sort etc.,)
+         1.assignment
+         2.quiz
+         
+       Quick Sort(I)
+       
+       Week 4: (NS)
+       Priority Queue
+       
+       Elementary Symbol Tables
+       
+       Week 5: (NS)
+       Balanced Search Trees
+       
+       
+       Geometric Applications of BSTs
+       
+       Week 6: (NS)
+       Hash Tables
+       
+       Symbol Table Applications
 
        -> Algorithm 2
+       
    
       
 
