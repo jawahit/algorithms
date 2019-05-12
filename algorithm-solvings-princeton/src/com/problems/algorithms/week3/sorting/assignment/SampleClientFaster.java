@@ -16,7 +16,7 @@ public class SampleClientFaster {
 	
 	// read the n points from a file
 		public static void main(String[] args) {
-			In in = new In("C:\\Users\\thangj3\\Desktop\\pers\\Alg1\\collinear\\input8.txt");
+			In in = new In("C:\\Users\\thangj3\\Desktop\\pers\\Alg1\\collinear\\rs1423.txt");
 			int n = in.readInt();
 			Point[] points = new Point[n];
 			for (int i = 0; i < n; i++) {
