@@ -36,6 +36,10 @@ class LinkedList<T> implements Iterable<T> {
 		}
 		return null;
 	}
+	
+	public T getLastAdded() {
+		return (T) this.head.data;
+	}
 
 	private void increaseSize() {
 		size++;

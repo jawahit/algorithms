@@ -19,21 +19,21 @@ import edu.princeton.cs.algs4.In;
  */
 public class MergeSortTest {
 
-	//@Test
+	@Test
 	public void checkForLengthLessThan5() {
 		Integer[] arr = { 5, 4, 1, 2, 6 };
 		MergeSort.sort(arr,null);
 		assertEquals(true, isSorted(arr));
 	}
 
-	//@Test
+	@Test
 	public void alreadySorted() {
 		Integer[] arr = { 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3 };
 		MergeSort.sort(arr,null);
 		assertEquals(true, isSorted(arr));
 	}
 
-	//@Test
+	@Test
 	public void checkForLongerValues() {
 		Integer[] arr = { 4, 5, 1, 2, 6, 8, 2, 1, 3, 4, 5, 6, 9, 11, 2, 7, 2, 5, 56, -1, -3, 3, 1, 98, -100, -98, 67,
 				-56 };
@@ -41,14 +41,14 @@ public class MergeSortTest {
 		assertEquals(true, isSorted(arr));
 	}
 
-	//@Test
+	@Test
 	public void checkForStringValues() {
 		String[] arr = { "zebra", "apple", "orange", "mango", "coconut", "gauva" };
 		MergeSort.sort(arr,null);
 		assertEquals(true, isSorted(arr));
 	}
 
-	//@Test
+	@Test
 	public void checkForAlphabetValues() {
 		String[] arr = { "M", "E", "R", "G", "E", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L",
 				"E" };
@@ -56,14 +56,14 @@ public class MergeSortTest {
 		assertEquals(true, isSorted(arr));
 	}
 
-	//@Test
+	@Test
 	public void checkForFullyDescendingOrderValues() {
 		Integer[] arr = { 100, 99, 1, 2, 98, 97, 96, 50, 45, 34, 23, 12, 2, 1 };
 		MergeSort.sort(arr,null);
 		assertEquals(true, isSorted(arr));
 	}
 
-	//@Test
+	@Test
 	public void checkForLongerStringWithNumber() {
 		String[] arr = { "31415926535897932384626433832795", "1", "3", "10", "3", "5" };
 		MergeSort.sort(arr,null);
@@ -71,14 +71,14 @@ public class MergeSortTest {
 	}
 	
 	
-	//@Test
+	@Test
 	public void testInitCapsWithComparator() {
 		String[] arr = { "zerba", "apple", "Apple", "Orange", "orange", "Zebra", "potato","Potato" };
 		MergeSort.sort(arr,new InitCapitalOrderComparator<String>());
 		assertEquals(true, isSorted(arr));
 	}
 	
-	//@Test
+	@Test
 	public void testinput8() {
 		In in = new In("C:\\Users\\thangj3\\Desktop\\pers\\Alg1\\collinear\\input8.txt");
 		int n = in.readInt();
@@ -92,7 +92,7 @@ public class MergeSortTest {
 		assertEquals(true, isSorted(points));
 	}
 	
-	//@Test
+	@Test
 	public void testinput80() {
 		In in = new In("C:\\Users\\thangj3\\Desktop\\pers\\Alg1\\collinear\\input80.txt");
 		int n = in.readInt();
@@ -106,7 +106,7 @@ public class MergeSortTest {
 		assertEquals(true, isSorted(points));
 	}
 	
-	//@Test
+	@Test
 	public void testinputrs1423() {
 		In in = new In("C:\\Users\\thangj3\\Desktop\\pers\\Alg1\\collinear\\rs1423.txt");
 		int n = in.readInt();
@@ -141,7 +141,7 @@ public class MergeSortTest {
 		}
 	}
 	
-	//@Test
+	@Test
 	public void testinput8WithComparatorArraySort() {
 		System.out.println("Test with Array Sort>>>>");
 		In in = new In("C:\\Users\\thangj3\\Desktop\\pers\\Alg1\\collinear\\input8.txt");

@@ -24,6 +24,10 @@ public class StackUsingLinkedList<T> implements Iterable<T>  {
 	public T pop() {
 		return list.removeLastAdded();
 	}
+	
+	public T peek() {
+		return list.getLastAdded();
+	}
 
 	public boolean isEmpty() {
 		return list.size() == 0;
