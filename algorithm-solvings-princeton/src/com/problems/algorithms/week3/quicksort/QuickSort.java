@@ -53,27 +53,28 @@ public class QuickSort {
 		return j;
 	}
 
-	public static int partioning(Object[] c, Object low, int i, int j) {
-		while (((Comparable) c[i]).compareTo(low) < 0) {
-			i++;
-		}
-		while (((Comparable) c[j]).compareTo(low) > 0) {
-			j--;
-		}
-		if (i < j && j > i) {
-			SortingUtils.exchange((Comparable[]) c, i, j);
-			return partioning(c, low, i, j);
-		} else {
-			SortingUtils.exchange((Comparable[]) c, j, 0);
-			return j;
-		}
-	}
+//	public static int partioning(Object[] c, Object low, int i, int j) {
+//		while (((Comparable) c[i]).compareTo(low) < 0) {
+//			i++;
+//		}
+//		while (((Comparable) c[j]).compareTo(low) > 0) {
+//			j--;
+//		}
+//		// && j > i
+//		if (i < j) {
+//			SortingUtils.exchange((Comparable[]) c, i, j);
+//			return partioning(c, low, i, j);
+//		} else {
+//			SortingUtils.exchange((Comparable[]) c, j, 0);
+//			return j;
+//		}
+//	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String[] arr = { "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L",
+		String[] arr = { "Q","Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L",
 				"E" };
 		for (int i = 0; i < 200; i++) {
 			sort(arr, null);
