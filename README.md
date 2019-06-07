@@ -60,8 +60,12 @@
          1.assignment
          2.quiz
          
-       Quick Sort(I)
-       
+       Quick Sort(C)
+         1.Implementation
+         2.Quick select
+         3.Duplicate keys (I)
+         4.Practice Quiz (I)
+         
        Week 4: (NS)
        Priority Queue
        
