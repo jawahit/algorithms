@@ -28,6 +28,7 @@ public class RecursionExamples {
 		System.out.println("Greatest Common Factor / GCD " + gcd(8, 12));
 		System.out.println("Method Execute count: " + count);
 		System.out.println("Log 2 base value :" + log2BaseApproxValue(24, 2));
+		System.out.println("Happy Value :" +isHappyNumber(23));
 
 	}
 
@@ -173,6 +174,38 @@ public class RecursionExamples {
 		}
 		return 1 + getLog2Value(m / b, b);
 	}
+	
+	/**
+	 * this method is to verify the sum of squares of integer is resolves to 1
+	 * For 
+	 * Ex1:
+	 *  s = 100  
+	 *  output : 1^2 + 0^2 + 0^2 = 1 so its happy number
+	 * Ex2:
+	 *  s = 19
+	 *  1^2 + 9^2 = 81
+	 *  8^2 + 1^2 = 68
+	 *  6^2 + 8^2 = 100
+	 *  1^2 + 0^2 + 0^2 = 1 so 19 is happy number
+	 * @param s
+	 * @return
+	 */
+	public static boolean isHappyNumber(int s) {
+		if(s == 1) return true;
+		if(s / 10 == 0) return false;
+		else {
+			int div = s;
+			int sum = 0;
+			while(div > 0) {
+				int mod = div % 10;
+				sum += Math.pow(mod, 2);
+				div = div / 10;
+			}
+			return isHappyNumber(sum);
+		}
+	}
+	
+	
 
 	private static class Company {
 		String title;
