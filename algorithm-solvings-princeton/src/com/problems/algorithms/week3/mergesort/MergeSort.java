@@ -10,7 +10,9 @@ import java.util.Comparator;
  * 
  * Compares Performance
  * 
- * worst ,average & best complexity : O(nlogn) Space complexity: n
+ * Time Complexity:
+ * 		worst ,average & best complexity: O(Nlogn)
+ * Space complexity: O(N)
  * 
  * Assuming if N is power of 2 then total performance is NlogN
  * 

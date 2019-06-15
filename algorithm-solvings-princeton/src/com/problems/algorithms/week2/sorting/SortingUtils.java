@@ -19,4 +19,8 @@ public class SortingUtils {
 			exchange(c, b, a);
 		}
 	}
+	
+	public static boolean isLess(Comparable[] c, int a, int b) {
+		return c[a].compareTo(c[b]) < 0;
+	}
 }
