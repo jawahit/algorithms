@@ -9,9 +9,9 @@ import com.problems.algorithms.week2.sorting.Shuffling;
 import com.problems.algorithms.week2.sorting.SortingUtils;
 
 /**
- * @author Thangaraj Jawahar
+ * {@code QuickSort} implementation
  * 
- *         Space complexity :
+ * Space complexity :
  *           worst - O(N)
  *           best - O(logN)
  *           average - O(Logn)
@@ -20,14 +20,18 @@ import com.problems.algorithms.week2.sorting.SortingUtils;
  * 		     worst - O(N^2)
  *         for ex: input is 19 total running count is : 19 * (4.247927513443585)
  *         = 80.7 (u will get nearer to that value)
- *
+
+ * 
+ * @author Thangaraj Jawahar
+ * 
+ *          *
  */
 public class QuickSort {
 
-	static int runningCount = 0;
+	static int compareCount = 0; //just get the compare count
 
 	public static void sort(Object[] c, Comparator comp) {
-		runningCount = 0;
+		compareCount = 0;
 		if (comp == null) {
 			Shuffling.sort((Comparable[]) c);
 			System.out.print("Input: ");
@@ -36,14 +40,13 @@ public class QuickSort {
 			System.out.print("Output: ");
 			print(c);
 			System.out.println("input size : "+ c.length);
-			System.out.println("Running LoopCount O(NlogN):" +runningCount );
+			System.out.println("Running LoopCount:" +compareCount );
 		}
 	}
 
 	public static void sort(Object[] c, int start, int hiIndex) {
 		if (hiIndex <= start)
 			return;
-		runningCount++;
 		int j = partioning(c, start, hiIndex);
 		sort(c, start, j - 1);
 		sort(c, j + 1, hiIndex);
@@ -56,12 +59,12 @@ public class QuickSort {
 //			while (SortingUtils.isLess((Comparable[]) c, ++lowIndex, i)) {
 //				if (lowIndex == j)
 //					break;
-//				runningCount++;
+//				compareCount++;
 //			}
 //			while (SortingUtils.isLess((Comparable[]) c, i, --hiIndex)) {
 //				if (hiIndex == i)
 //					break;
-//				runningCount++;
+//				compareCount++;
 //			}
 //			if (hiIndex > lowIndex) {
 //				SortingUtils.exchange((Comparable[]) c, lowIndex, hiIndex);
@@ -77,12 +80,13 @@ public class QuickSort {
 		int lowIndex = i;
 		int hiIndex = j + 1;
 		while (true) {
+			compareCount++;
 			while (lowIndex < j && ((Comparable) c[++lowIndex]).compareTo(c[i]) < 0) {
-				runningCount++;
-
+				compareCount++;
 			}
+			compareCount++;
 			while (hiIndex > i && ((Comparable) c[--hiIndex]).compareTo(c[i]) > 0) {
-				runningCount++;
+				compareCount++;
 			}
 			if (hiIndex > lowIndex) {
 				SortingUtils.exchange((Comparable[]) c,  hiIndex, lowIndex);
@@ -93,6 +97,8 @@ public class QuickSort {
 		SortingUtils.exchange((Comparable[]) c, i, hiIndex);
 		return hiIndex;
 	}
+	
+	
 
 	/**
 	 * @param args
@@ -119,8 +125,8 @@ public class QuickSort {
 		int limit = 10;
 		for (int i = 0; i < limit; i++) {
 			sort(arr, null);
-			sum += runningCount;
-			System.out.println("running count :" + runningCount);
+			sum += compareCount;
+			System.out.println("running count :" + compareCount);
 		}
 		System.out.println("input size:" + arr.length);
 		System.out.println("Average runnning time : " + sum / limit);

@@ -23,4 +23,28 @@ public class SortingUtils {
 	public static boolean isLess(Comparable[] c, int a, int b) {
 		return c[a].compareTo(c[b]) < 0;
 	}
+	
+	public static boolean isGreater(Comparable[] c, int a, int b) {
+		return c[a].compareTo(c[b]) > 0;
+	}
+	
+	public static boolean isEqual(Comparable[] c, int a, int b) {
+		return c[a].compareTo(c[b]) == 0;
+	}
+	
+	public static void print(Comparable[] arr) {
+		for (Object s : arr) {
+			System.out.print(s + " ");
+		}
+		System.out.println();
+	}
+	
+
+	public static void print(Object[] arr) {
+		for (Object s : arr) {
+			System.out.print(s + " ");
+		}
+		System.out.println();
+
+	}
 }
