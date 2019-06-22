@@ -10,8 +10,8 @@ package com.problems.algorithms.week2.sorting;
  * 
  * constraints: all elements in the array should be distinct
  * 
- * sorting this way is of course quadratic time
- * but the move is just O(N)
+ * sorting this way is of course quadratic time O(N^2)
+ * but the move is just O(N) (so we are happy)
  *  this program is just to find the number of moves not to sort the array 
  * 
  * <blockquote>
@@ -46,6 +46,11 @@ package com.problems.algorithms.week2.sorting;
  *   
  * </blockquote>   
  *
+ *
+ *so the main goal is find the next smallest element in the array and find the elements
+ *smaller than that next smallest return total - smaller count which is nothing but 
+ *number of moves required to sort the array work out with example above so it's easy to 
+ *understand
  *
  *credits:
  *https://stackoverflow.com/users/1011995/daniel-fischer
