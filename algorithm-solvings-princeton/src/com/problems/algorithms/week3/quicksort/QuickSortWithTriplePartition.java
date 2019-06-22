@@ -22,6 +22,15 @@ import com.problems.algorithms.week2.sorting.SortingUtils;
  *     B,R,W,R,R,R,R,R,R,B,R,R,B,R,B,B,B,R,B,R,W,W,W,W,W <br>
  *  o/p -  <br>
  *     B,B,B,B,B,B,B,R,R,R,R,R,R,R,R,R,R,R,R,W,W,W,W,W,W<br>
+ *     
+ *  Features:
+ *    Mainly used for duplicate keys
+ *    Inplace sorting
+ *    
+ *  DisAdvantages:
+ *    Not Guaranteed Nlogn
+ *       
+ *     
  * @author Thangaraj Jawahar
  * 
  * 

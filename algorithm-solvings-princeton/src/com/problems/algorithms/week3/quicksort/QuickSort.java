@@ -7,28 +7,49 @@ import java.util.Comparator;
 
 import com.problems.algorithms.week2.sorting.Shuffling;
 import com.problems.algorithms.week2.sorting.SortingUtils;
+import com.problems.algorithms.week3.mergesort.MergeSort;
 
 /**
  * {@code QuickSort} implementation
- * 
- * Space complexity :
- *           worst - O(N)
- *           best - O(logN)
- *           average - O(Logn)
- *         Time Complexity:
- *         	 best,average - O(Nlogn)
- * 		     worst - O(N^2)
- *         for ex: input is 19 total running count is : 19 * (4.247927513443585)
- *         = 80.7 (u will get nearer to that value)
-
- * 
+ * <blockquote>
+ * <p>
+ * 		   <b>Space complexity : </b><br>
+ *           worst - O(N)<br>
+ *           best - O(logN)<br>
+ *           average - O(Logn)<br>
+ *         <b>Time Complexity:</b><br>
+ * 		     worst - O(N^2/2)<br>
+ *           average - O(2N ln N)<br>
+ *         	 best - O(NlognN) </p>
+ *         </blockquote>
+ *         <blockquote>
+ *         For ex:<br>
+ *         Worst Case:<br>
+ *         input is 19 total running count is : ( 19 ^ 2 /2)<br>
+ *         = 180.5 (u will get nearer to that value) <br>
+ *         Average Case:<br>
+ *         input is 19 total running count is : (19 * 2) * (4.247927513443585)<br>
+ *         = 161.421245511 (u will get nearer to that value)<br>
+ *         Best Case:<br>
+ *         input is 19 total running count is : 19 * (4.247927513443585)<br>
+ *         = 80.7 (u will get nearer to that value)<br>
+		   </blockquote>
+		   
+	Feature:
+	   Faster performance
+	   Inplace Sorting (i.e., no additional space for sorting like {@link MergeSort} thats why used for primitive datatypes sorting
+	   
+	Disadvantage:
+	   Not guaranteed Nlogn
+	   Duplicate keys might quadratic
+	   Not a Stable sort
+	   
  * @author Thangaraj Jawahar
  * 
- *          *
  */
 public class QuickSort {
 
-	static int compareCount = 0; //just get the compare count
+	static int compareCount = 0; //just get the compare count to calculate the performance
 
 	public static void sort(Object[] c, Comparator comp) {
 		compareCount = 0;

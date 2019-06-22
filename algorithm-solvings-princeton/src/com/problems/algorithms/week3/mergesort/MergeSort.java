@@ -24,6 +24,13 @@ import java.util.Comparator;
  * 
  * And Array Access id 6NlgN for any size of array
  * 
+ * Features: 
+ *    Stable sort and guaranteed NlogN performance
+ *    
+ * Disadvantage:
+ * 
+ *    Extra Aux space O(N) that's used for sort the objects
+ * 
  * @author Thangaraj Jawahar
  *
  */
