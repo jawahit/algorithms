@@ -50,7 +50,7 @@ package com.problems.algorithms.week2.sorting;
  *so the main goal is find the next smallest element in the array and find the elements
  *smaller than that next smallest return total - smaller count which is nothing but 
  *number of moves required to sort the array work out with example above so it's easy to 
- *understand
+ *understand better
  *
  *credits:
  *https://stackoverflow.com/users/1011995/daniel-fischer
