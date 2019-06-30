@@ -26,6 +26,13 @@ public class QuickSortTest {
 		QuickSort.sort(arr, null);
 		assertEquals(true, isSorted(arr));
 	}
+	
+	@Test
+	public void twoValuesEqulaTest() {
+		Integer[] arr = { 1,1,1,2,1 };
+		QuickSort.sort(arr, null);
+		assertEquals(true, isSorted(arr));
+	}
 
 	@Test
 	public void alreadySorted() {
