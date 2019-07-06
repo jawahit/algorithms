@@ -6,6 +6,10 @@ package com.problems.algorithms.week3.quicksort.problems;
 import com.problems.algorithms.week2.sorting.SortingUtils;
 
 /**
+ * 
+ *  Time Complexity O(NlogN)
+ *  Space Complexity O(M+N)
+ * 
  * @author Thangaraj Jawahar
  *
  *         Jun 23, 2019
