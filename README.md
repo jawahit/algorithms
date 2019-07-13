@@ -63,10 +63,10 @@
        Quick Sort(C)
          1.Implementation
          2.Quick select
-         3.Duplicate keys (I)
-         4.Practice Quiz (I)
+         3.Duplicate keys 
+         4.Practice Quiz 
          
-       Week 4: (NS)
+       Week 4: (I)
        Priority Queue
        
        Elementary Symbol Tables
