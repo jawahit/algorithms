@@ -13,8 +13,8 @@ import java.util.Arrays;
  *  1.Take the kth index divide by  k/2 
  *  2.Find min out of arr1 size & k/2 as i
  *  3.Find min out of arr2 size & k/2 as j
- *  4.if ith element on Array1 > jth element on Array2.then from left to jth positions are ignored 
- *  since those elements go first when we do sorting and reduce the same jfrom k = k - j
+ *  4.if ith element on Array1 > jth element on Array2.then from left to jth positions on array2's are ignored 
+ *  since those elements go first when we do sorting and reduce the same j from k = k - j
  *  4.else do vice versa for Array1
  *  5.do recursive for remaining elements
  *  
