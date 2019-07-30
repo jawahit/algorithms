@@ -21,12 +21,18 @@ public class MinPQ<Key extends Comparable<Key>> {
 	public MinPQ(int size) {
 		keys = (Key[]) new Comparable[size];
 	}
+	
+	public MinPQ() {
+		keys = (Key[]) new Comparable[5];
+	}
 
 	public MinPQ(Key[] keys) {
 		this.keys = keys;
 	}
 
 	public void insert(Key k) {
+		if (N == (keys.length - 1))
+			resize(N * 2);
 		keys[++N] = k;
 		swim(N);
 	}
@@ -42,14 +48,24 @@ public class MinPQ<Key extends Comparable<Key>> {
 		Key min = keys[1];
 		keys[1] = keys[N--];
 		sink(1);
-		keys[N+1] = null;
+		keys[N + 1] = null;
+		if (N > 0 && N == ((keys.length - 1) / 4))
+			resize(keys.length / 2);
 		return min;
 	}
-	
+
+	private void resize(int k) {
+		Key[] newKeys = (Key[]) new Comparable[k];
+		for (int i = 0; i <= N; i++) {
+			newKeys[i] = keys[i];
+		}
+		keys = newKeys;
+	}
+
 	public Key min() {
 		return keys[1];
 	}
-	
+
 	public void printList() {
 		SortingUtils.print(keys);
 	}
@@ -67,7 +83,7 @@ public class MinPQ<Key extends Comparable<Key>> {
 			smaller = smaller * 2;
 		}
 	}
-	
+
 	public int size() {
 		return N;
 	}
