@@ -66,12 +66,18 @@
          3.Duplicate keys 
          4.Practice Quiz 
          
-       Week 4: (I)
+       Week 4: (C)
        Priority Queue
+       MinPQ
+       MaxPQ
+       HeapSort
+       
+       Assignment:
+          8-puzzle
        
        Elementary Symbol Tables
        
-       Week 5: (NS)
+       Week 5: (I)
        Balanced Search Trees
        
        
