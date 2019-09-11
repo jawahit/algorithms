@@ -68,10 +68,9 @@
          
        Week 4: (C)
        Priority Queue
-       MinPQ
-       MaxPQ
-       HeapSort
-       
+        1.MinPQ
+        2.MaxPQ
+        3.HeapSort
        Assignment:
           8-puzzle
        
