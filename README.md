@@ -81,8 +81,9 @@
        
        
        Geometric Applications of BSTs
+       Assignment: kd-Trees
        
-       Week 6: (NS)
+       Week 6: (C)
        Hash Tables
        
        Symbol Table Applications
