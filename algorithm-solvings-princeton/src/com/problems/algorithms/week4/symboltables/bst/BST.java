@@ -23,7 +23,7 @@ import edu.princeton.cs.algs4.Queue;
  * 
  *
  */
-public class BST<Key extends Comparable<Key>, Value> {
+public class BST<Key extends Comparable<Key>, Value> implements ST<Key, Value> {
 
 	private Node root;
 
@@ -68,10 +68,6 @@ public class BST<Key extends Comparable<Key>, Value> {
 
 	}
 
-	public void delete(Key key) {
-
-	}
-
 	public Key min() {
 		if (this.root != null) {
 			Node n = this.root;
@@ -80,6 +76,19 @@ public class BST<Key extends Comparable<Key>, Value> {
 					n = n.left;
 				else
 					return n.key;
+			}
+		}
+		return null;
+	}
+
+	private Node min(Node n) {
+		if (n != null) {
+			Node x = n;
+			while (x != null) {
+				if (x.left != null)
+					x = x.left;
+				else
+					return x;
 			}
 		}
 		return null;
@@ -183,6 +192,54 @@ public class BST<Key extends Comparable<Key>, Value> {
 		return node.count;
 	}
 
+	@Override
+	public Iterable<Key> rangeSearch(Key lo, Key hi) {
+        if (lo == null) throw new IllegalArgumentException("left key value shouldn't be null");
+        if (hi == null) throw new IllegalArgumentException("right key value shouldn't be null");
+		Queue<Key> queue = new Queue<Key>();
+		if (this.root != null) {
+			rangeSearch(root, lo, hi, queue);
+		}
+		return queue;
+	}
+
+	public void rangeSearch(Node x, Key lo, Key hi, Queue<Key> queue) {
+		if (x == null)
+			return;
+		int compLo = lo.compareTo(x.key);
+		int compHi = hi.compareTo(x.key);
+		if (compLo < 0)
+			rangeSearch(x.left, lo, hi, queue);
+		if (compLo <= 0 && compHi >= 0)
+			queue.enqueue(x.key);
+		if (compHi > 0)
+			rangeSearch(x.right, lo, hi, queue);
+	}
+
+	private Node find(Node x, Key k) {
+		int c = k.compareTo(x.key);
+		if (c == 0)
+			return x;
+		if (c < 0)
+			return find(x.left, k);
+		else
+			return find(x.right, k);
+	}
+
+	@Override
+	public int rangeCount(Key lo, Key hi) {
+		// TODO Auto-generated method stub
+		return size(lo, hi);
+	}
+
+	@Override
+	public int size(Key lo, Key hi) {
+		if (contains(hi))
+			return rank(hi) - rank(lo) + 1;
+		else
+			return rank(hi) - rank(lo);
+	}
+
 	public Iterable<Key> keys() {
 		Queue<Key> q = new Queue<Key>();
 		inorder(this.root, q);
@@ -214,6 +271,60 @@ public class BST<Key extends Comparable<Key>, Value> {
 				q.enqueue(n.right);
 		}
 		return list;
+	}
+
+	public void deleteMin() {
+		this.root = deleteMin(this.root);
+	}
+
+	private Node deleteMin(Node x) {
+		if (x.left == null)
+			return x.right;
+		x.left = deleteMin(x.left);
+		x.count = 1 + size(x.left) + size(x.right);
+		return x;
+	}
+
+	public void deleteMax() {
+		this.root = deleteMax(this.root);
+	}
+
+	private Node deleteMax(Node n) {
+		if (n.right == null)
+			return n.left;
+		n.right = deleteMax(n.right);
+		n.count = 1 + size(n.left) + size(n.right);
+		return n;
+	}
+
+	public void delete(Key k) {
+		this.root = delete(this.root, k);
+	}
+
+	/*
+	 * Follows hibbard deletion pattern Average case is Sqrt N
+	 * 
+	 */
+	private Node delete(Node n, Key k) {
+		if (n == null)
+			return null;
+		int comp = k.compareTo(n.key);
+		if (comp < 0) {
+			n.left = delete(n.left, k);
+		} else if (comp > 0) {
+			n.right = delete(n.right, k);
+		} else {
+			if (n.right == null)
+				return n.left;
+			if (n.left == null)
+				return n.right;
+			Node x = n;
+			n = min(x.right);
+			n.right = deleteMin(x.right);
+			n.left = x.left;
+		}
+		n.count = size(n.left) + size(n.right) + 1;
+		return n;
 	}
 
 	private class Node {
@@ -248,7 +359,8 @@ public class BST<Key extends Comparable<Key>, Value> {
 		System.out.println(bst.keys());
 		System.out.println("ceiling : " + bst.ceiling("f"));
 		System.out.println("floor : " + bst.floor("t"));
-		System.out.println("rank : " + bst.rank("d"));
+		System.out.println("rank : " + bst.rank("c"));
 		System.out.println(bst.levelOrder());
 	}
+
 }

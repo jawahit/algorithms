@@ -15,8 +15,8 @@ import edu.princeton.cs.algs4.Stopwatch;
 public class SampleClientFaster {
 	
 	// read the n points from a file
-		public static void main(String[] args) {
-			In in = new In("C:\\Users\\thangj3\\Desktop\\pers\\Alg1\\collinear\\rs1423.txt");
+		public static void main(String[] args) throws InterruptedException {
+			In in = new In("/home/jawahar/dev/codes/algorithms/princenton-assigments/collinear/rs1423.txt");
 			int n = in.readInt();
 			Point[] points = new Point[n];
 			for (int i = 0; i < n; i++) {
@@ -42,6 +42,7 @@ public class SampleClientFaster {
 			for (LineSegment segment : collinear.segments()) {
 				if(segment!=null) {
 					StdOut.println(segment);
+					Thread.sleep(4000);
 					segment.draw();				
 				}
 			}

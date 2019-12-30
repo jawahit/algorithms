@@ -15,7 +15,7 @@ import org.junit.Test;
 public class MaxPQTest {
 
 	@Test
-	public void randomTest() {
+	public void randomTest() throws IllegalAccessException {
 		MaxPQ<String> maxPq = new MaxPQ<String>();
 		maxPq.insert("O");
 		maxPq.insert("R");

@@ -15,7 +15,7 @@ import edu.princeton.cs.algs4.Stopwatch;
 public class SampleClient {
 	// read the n points from a file
 	public static void main(String[] args) {
-		In in = new In("C:\\Users\\thangj3\\Desktop\\pers\\Alg1\\collinear\\rs1423.txt");
+		In in = new In("/home/jawahar/dev/codes/algorithms/princenton-assigments/collinear/kw1260.txt");
 		int n = in.readInt();
 		Point[] points = new Point[n];
 		for (int i = 0; i < n; i++) {
@@ -39,7 +39,6 @@ public class SampleClient {
 		BruteCollinearPoints collinear = new BruteCollinearPoints(points);
 		System.out.println(sw.elapsedTime());
 		for (LineSegment segment : collinear.segments()) {
-
 				StdOut.println(segment);
 				segment.draw();				
 		}
