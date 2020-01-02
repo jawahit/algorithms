@@ -1,5 +1,5 @@
-import java.util.Iterator;
 
+package com.problems.algorithms.week5.kdtrees.assignment;
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
 import edu.princeton.cs.algs4.StdDraw;
@@ -30,7 +30,7 @@ public class KdTree {
 	}
 
 	public void insert(Point2D point) {
-		this.root = insert(this.root, point, true, new Point2D(0.00, 1.00));
+		this.root = insert(this.root, point, true, 0.00, 1.00);
 	}
 
 	public boolean contains(Point2D point) {
@@ -84,27 +84,27 @@ public class KdTree {
 		return false;
 	}
 
-	private Node insert(Node x, Point2D point, boolean vertical,Point2D parentPoint) {
+	private Node insert(Node x, Point2D point, boolean vertical,double min,double max) {
 		if (x == null) {
 			x = new Node(point, vertical);
 			if(vertical)
-				x.setRectHV(new RectHV(point.x(), parentPoint.x(), point.x(), parentPoint.y()));
+				x.setRectHV(new RectHV(point.x(), min, point.x(), max));
 			else
-				x.setRectHV(new RectHV(point.x() < parentPoint.x() ? 0.00 : parentPoint.x(), point.y(), parentPoint.x(), point.y()));	
+				x.setRectHV(new RectHV(min, point.y(), max, point.y()));	
 			size++;
 			return x;
 		}
 		if (vertical) {
 			if (point.x() < x.point.x()) {
-				x.left = insert(x.left, point, false, x.point);
+				x.left = insert(x.left, point, false, min, x.point.x());
 			} else {
-				x.right = insert(x.right, point, false, x.point);
+				x.right = insert(x.right, point, false, x.point.x(), max);
 			}
 		} else {
 			if (point.y() < x.point.y()) {
-				x.left = insert(x.left, point, true, x.point);
+				x.left = insert(x.left, point, true, min, x.point.y());
 			} else {
-				x.right = insert(x.right, point, true, x.point);
+				x.right = insert(x.right, point, true, x.point.y(), max);
 			}
 		}
 		return x;
