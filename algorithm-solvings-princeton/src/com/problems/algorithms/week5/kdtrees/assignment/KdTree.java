@@ -1,5 +1,10 @@
 
 package com.problems.algorithms.week5.kdtrees.assignment;
+import java.awt.Font;
+import java.text.DecimalFormat;
+import java.util.HashSet;
+import java.util.Set;
+
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
 import edu.princeton.cs.algs4.StdDraw;
@@ -16,6 +21,7 @@ public class KdTree {
 
 	private Node root = null;
 	private int size = 0;
+	private static DecimalFormat df = new DecimalFormat("0.00");
 
 	public KdTree() {
 
@@ -39,28 +45,57 @@ public class KdTree {
 
 	public void draw() {
 		StdDraw.enableDoubleBuffering();
-		draw(this.root,0.0,1.0);
+		draw(this.root);
 	}
+
 	public Iterable<Point2D> range(RectHV rect) {
-		return null;
-		
+		Set<Point2D> points = new HashSet<>();
+		if (rect.xmin() != 0.00 && rect.xmax() != 0.00)
+		range(this.root, rect, points);
+		return points;
 	}
-	private void draw(Node x,double xx, double yy) {		
-		if(x != null) {
+
+	private void range(Node x, RectHV rect, Set<Point2D> points) {
+		if (x == null)
+			return;
+	//	if (rect.intersects(x.rectHV)) {
+			if (rect.distanceSquaredTo(x.point) == 0.00)
+				points.add(x.point);
+		//} 
+		range(x.left, rect, points);
+		range(x.right, rect, points);
+	}
+
+	private void draw(Node x) {
+		if (x != null) {
+			StdDraw.setPenColor(StdDraw.BLACK);
+			StdDraw.setPenRadius(0.01);
 			x.point.draw();
-			//StdDraw.clear();
-			if(x.isVertical()) {
+//			StdDraw.setFont(new Font("SansSerif", Font.PLAIN, 12));
+//			StdDraw.textRight(x.point.x(), x.point.y(),
+//					"(" + df.format(x.point.x()) + "," + df.format(x.point.y()) + ")");
+			// StdDraw.clear();
+			if (x.isVertical()) {
 				StdDraw.setPenColor(StdDraw.RED);
-				StdDraw.setPenRadius(0.01);
-				StdDraw.line(x.getRectHV().xmin(), x.getRectHV().ymin(), x.getRectHV().xmax(), x.rectHV.ymax());				
-			}else {
-				StdDraw.setPenColor(StdDraw.BLUE);
-				StdDraw.setPenRadius(0.01);
+				StdDraw.setPenRadius(0.001);
 				StdDraw.line(x.getRectHV().xmin(), x.getRectHV().ymin(), x.getRectHV().xmax(), x.rectHV.ymax());
+//				StdDraw.text(x.getRectHV().xmin(), x.getRectHV().ymin(),
+//						"(" + df.format(x.getRectHV().xmin()) + "," + df.format(x.getRectHV().ymin()) + ")", 90);
+//				StdDraw.text(x.getRectHV().xmax(), x.getRectHV().ymax(),
+//						"(" + df.format(x.getRectHV().xmax()) + "," + df.format(x.getRectHV().ymax()) + ")", 90);
+			} else {
+				StdDraw.setPenColor(StdDraw.BLUE);
+				StdDraw.setPenRadius(0.001);
+				StdDraw.line(x.getRectHV().xmin(), x.getRectHV().ymin(), x.getRectHV().xmax(), x.rectHV.ymax());
+//				StdDraw.text(x.getRectHV().xmin(), x.getRectHV().ymin(),
+//						"(" + df.format(x.getRectHV().xmin()) + "," + df.format(x.getRectHV().ymin()) + ")", 90);
+//				StdDraw.text(x.getRectHV().xmax(), x.getRectHV().ymax(),
+//						"(" + df.format(x.getRectHV().xmax()) + "," + df.format(x.getRectHV().ymax()) + ")", 90);
 			}
-		}else return;
-		draw(x.left,x.point.x(),x.point.y());
-		draw(x.right,x.point.x(),x.point.y());
+		} else
+			return;
+		draw(x.left);
+		draw(x.right);
 	}
 
 	private boolean contains(Node x, Point2D point, boolean vertical) {
@@ -84,27 +119,27 @@ public class KdTree {
 		return false;
 	}
 
-	private Node insert(Node x, Point2D point, boolean vertical,double min,double max) {
+	private Node insert(Node x, Point2D point, boolean vertical, double min, double max) {
 		if (x == null) {
 			x = new Node(point, vertical);
-			if(vertical)
+			if (vertical)
 				x.setRectHV(new RectHV(point.x(), min, point.x(), max));
 			else
-				x.setRectHV(new RectHV(min, point.y(), max, point.y()));	
+				x.setRectHV(new RectHV(min, point.y(), max, point.y()));
 			size++;
 			return x;
 		}
 		if (vertical) {
 			if (point.x() < x.point.x()) {
-				x.left = insert(x.left, point, false, min, x.point.x());
+				x.left = insert(x.left, point, false, 0.0, x.point.x());
 			} else {
-				x.right = insert(x.right, point, false, x.point.x(), max);
+				x.right = insert(x.right, point, false, x.point.x(), 1.0);
 			}
 		} else {
 			if (point.y() < x.point.y()) {
-				x.left = insert(x.left, point, true, min, x.point.y());
+				x.left = insert(x.left, point, true, 0.0, x.point.y());
 			} else {
-				x.right = insert(x.right, point, true, x.point.y(), max);
+				x.right = insert(x.right, point, true, x.point.y(), 1.0);
 			}
 		}
 		return x;
@@ -191,8 +226,6 @@ public class KdTree {
 		public void setRectHV(RectHV rectHV) {
 			this.rectHV = rectHV;
 		}
-		
-		
 
 	}
 
