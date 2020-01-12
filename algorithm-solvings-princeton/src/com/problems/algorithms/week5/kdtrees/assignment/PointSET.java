@@ -1,8 +1,3 @@
-/**
- * 
- */
-package com.problems.algorithms.week5.kdtrees.assignment;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -12,15 +7,16 @@ import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
 
 /**
- * @author Thangaraj Jawahar
- *
- *         Dec 28, 2019
  * 
+ */
+
+/**
+ * @author Thangaraj Jawahar
  *
  */
 public class PointSET {
 
-	private TreeSet<Point2D> root = new TreeSet<Point2D>();
+	private TreeSet<Point2D> root = new TreeSet<>();
 
 	public PointSET() {
 
@@ -35,54 +31,63 @@ public class PointSET {
 	}
 
 	public void insert(Point2D p) {
-		if (p == null)
-			throw new IllegalArgumentException("parameter can't be null");
+		if(p == null)
+		throw new IllegalArgumentException("argument can't be null");
 		this.root.add(p);
 	}
 
 	public boolean contains(Point2D p) {
-		if (p == null)
-			throw new IllegalArgumentException("parameter can't be null");
-		return this.root.contains(p);
+		if(p == null)
+			throw new IllegalArgumentException("argument can't be null");
+		return this.contains(p);
 	}
 
 	public void draw() {
 		Iterator<Point2D> iterator = this.root.iterator();
 		while (iterator.hasNext()) {
-			iterator.next().draw();
+			Point2D point2d = iterator.next();
+			point2d.draw();
 		}
 	}
 
 	// all points that are inside the rectangle (or on the boundary)
 	public Iterable<Point2D> range(RectHV rect) {
-		if (rect == null)
-			throw new IllegalArgumentException("parameter can't be null");
+		if(rect == null)
+			throw new IllegalArgumentException("argument can't be null");
+		Set<Point2D> pInsideBox = new HashSet<Point2D>();
 		Point2D left = new Point2D(rect.xmin(), rect.ymin());
 		Point2D right = new Point2D(rect.xmax(), rect.ymax());
-		Set<Point2D> rangeSet = this.root.subSet(left, true, right, true);
-		Iterator<Point2D> iterator = rangeSet.iterator();
-		Set<Point2D> pInsideBox = new HashSet<Point2D>();
-		while (iterator.hasNext()) {
-			Point2D point = iterator.next();
-			if (rect.distanceSquaredTo(point) == 0)
-				pInsideBox.add(point);
+		pInsideBox = this.root.subSet(left, true, right, true);
+		Iterator<Point2D> pIterator = pInsideBox.iterator();
+		Set<Point2D> finalPoints = new HashSet<Point2D>();
+		while(pIterator.hasNext()) {
+			Point2D point = pIterator.next();
+			if(rect.distanceSquaredTo(point)==0.00) finalPoints.add(point);
 		}
-		return pInsideBox;
+		return finalPoints;
 	}
 
 	// a nearest neighbor in the set to point p; null if the set is empty
 	public Point2D nearest(Point2D p) {
-		if (p == null)
-			throw new IllegalArgumentException("parameter can't be null");
-		Point2D floor = this.root.floor(p);
-		Point2D ceiling = this.root.ceiling(p);
-		if(floor!=null && floor.x()<ceiling.x()) {
-			return floor;
+		if(p == null)
+			throw new IllegalArgumentException("argument can't be null");
+		return nearest(root, p);
+	}
+	
+	private Point2D nearest(TreeSet<Point2D> root,Point2D p) {
+		Iterator<Point2D> iterator = this.root.iterator();
+		Point2D nearest = iterator.next();
+		while (iterator.hasNext()) {
+			Point2D point2d = iterator.next();
+			if(point2d.distanceSquaredTo(p) < nearest.distanceSquaredTo(p)) {
+				nearest = point2d;
+			}
 		}
-		return ceiling;
+		return nearest;
 	}
 
 	public static void main(String[] args) {
+
 	}
 
 }
