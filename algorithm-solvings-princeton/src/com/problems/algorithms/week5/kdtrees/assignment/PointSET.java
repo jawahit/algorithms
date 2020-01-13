@@ -1,5 +1,7 @@
-import java.util.HashSet;
+package com.problems.algorithms.week5.kdtrees.assignment;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -39,7 +41,7 @@ public class PointSET {
 	public boolean contains(Point2D p) {
 		if(p == null)
 			throw new IllegalArgumentException("argument can't be null");
-		return this.contains(p);
+		return this.root.contains(p);
 	}
 
 	public void draw() {
@@ -54,12 +56,12 @@ public class PointSET {
 	public Iterable<Point2D> range(RectHV rect) {
 		if(rect == null)
 			throw new IllegalArgumentException("argument can't be null");
-		Set<Point2D> pInsideBox = new HashSet<Point2D>();
+		Set<Point2D> pInsideBox = new TreeSet<Point2D>();
 		Point2D left = new Point2D(rect.xmin(), rect.ymin());
 		Point2D right = new Point2D(rect.xmax(), rect.ymax());
 		pInsideBox = this.root.subSet(left, true, right, true);
 		Iterator<Point2D> pIterator = pInsideBox.iterator();
-		Set<Point2D> finalPoints = new HashSet<Point2D>();
+		List<Point2D> finalPoints = new ArrayList<Point2D>();
 		while(pIterator.hasNext()) {
 			Point2D point = pIterator.next();
 			if(rect.distanceSquaredTo(point)==0.00) finalPoints.add(point);

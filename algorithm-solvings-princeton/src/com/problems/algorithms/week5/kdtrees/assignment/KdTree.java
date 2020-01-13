@@ -1,7 +1,7 @@
-import java.awt.Font;
-import java.text.DecimalFormat;
-import java.util.HashSet;
-import java.util.Set;
+package com.problems.algorithms.week5.kdtrees.assignment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
@@ -19,7 +19,7 @@ public class KdTree {
 
 	private Node root = null;
 	private int size = 0;
-	private static DecimalFormat df = new DecimalFormat("0.00");
+	//private static DecimalFormat df = new DecimalFormat("0.00");
 
 	public KdTree() {
 
@@ -47,7 +47,7 @@ public class KdTree {
 	}
 
 	public Iterable<Point2D> range(RectHV rect) {
-		Set<Point2D> points = new HashSet<>();
+		List<Point2D> points = new ArrayList<>();
 		if (rect.xmin() != 0.00 && rect.xmax() != 0.00) {
 			if (rect.xmin() < this.root.point.x() && rect.xmax() <= this.root.point.x()) {
 				if (rect.distanceSquaredTo(this.root.point) == 0.00)
@@ -64,7 +64,7 @@ public class KdTree {
 		return points;
 	}
 
-	private void range(Node x, RectHV rect, Set<Point2D> points) {
+	private void range(Node x, RectHV rect, List<Point2D> points) {
 		if (x == null)
 			return;
 		if (rect.intersects(x.rectHV)) {
@@ -86,14 +86,15 @@ public class KdTree {
 
 	private Point2D nearest(Node x, Point2D queryP, Point2D nearest) {
 		if (x == null)
-			return null;
-		if (nearest != null && x.rectHV.distanceSquaredTo(queryP) < queryP.distanceSquaredTo(nearest)) {
+			return nearest;
+		if (nearest != null
+				&& nearest != x.point  && x.rectHV.distanceSquaredTo(queryP) < queryP.distanceSquaredTo(nearest) ) {
 			if (x.point.distanceSquaredTo(queryP) < queryP.distanceSquaredTo(nearest)) {
 				nearest = x.point;
-				return nearest;
 			}
 		}
 		nearest = nearest(x.left, queryP, nearest);
+	//	if(x.right!=null && x.right.point.distanceSquaredTo(queryP) < queryP.distanceSquaredTo(nearest))
 		nearest = nearest(x.right, queryP, nearest);
 		return nearest;
 	}
@@ -177,7 +178,7 @@ public class KdTree {
 		return x;
 	}
 
-	class Node {
+	private static class Node {
 		Node left;
 		Node right;
 		Point2D point;
