@@ -20,17 +20,18 @@ public class RangeSearchVisualizer {
 	 public static void main(String[] args) {
 
 	        // initialize the data structures from file
-	        String filename = "/home/jawahar/dev/codes/algorithms/algorithm-solvings-princeton/resources/week5/sample-input.txt";
+	        String filename = "/home/jawahar/dev/codes/algorithms/algorithm-solvings-princeton/resources/week5/input1.txt";
 	        In in = new In(filename);
 	        PointSET brute = new PointSET();
-	     //   KdTree kdtree = new KdTree();
+	        KdTree kdtree = new KdTree();
 	        while (!in.isEmpty()) {
 	            double x = in.readDouble();
 	            double y = in.readDouble();
 	            Point2D p = new Point2D(x, y);
-	       //     kdtree.insert(p);
+	           kdtree.insert(p);
 	            brute.insert(p);
 	        }
+	        System.out.println(kdtree.contains(new Point2D(0.875, 0.5625)));
 
 	        double x0 = 0.0, y0 = 0.0;      // initial endpoint of rectangle
 	        double x1 = 0.0, y1 = 0.0;      // current location of mouse
@@ -85,13 +86,15 @@ public class RangeSearchVisualizer {
 	                p.draw();
 
 	            // draw the range search results for kd-tree in blue
-//	            StdDraw.setPenRadius(0.02);
-//	            StdDraw.setPenColor(StdDraw.BLUE);
-//	            for (Point2D p : kdtree.range(rect))
-//	                p.draw();
+	            StdDraw.setPenRadius(0.02);
+	            StdDraw.setPenColor(StdDraw.BLUE);
+	            for (Point2D p : kdtree.range(rect))
+	                p.draw();
 
 	            StdDraw.show();
 	            StdDraw.pause(20);
+	            
+	           
 	        }
 	    }
 

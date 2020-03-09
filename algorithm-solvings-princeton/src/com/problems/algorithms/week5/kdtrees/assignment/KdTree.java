@@ -19,7 +19,7 @@ public class KdTree {
 
 	private Node root = null;
 	private int size = 0;
-	//private static DecimalFormat df = new DecimalFormat("0.00");
+	// private static DecimalFormat df = new DecimalFormat("0.00");
 
 	public KdTree() {
 
@@ -34,10 +34,16 @@ public class KdTree {
 	}
 
 	public void insert(Point2D point) {
+		if (point == null)
+			throw new IllegalArgumentException("argument can't be null");
 		this.root = insert(this.root, point, true, 0.00, 1.00);
 	}
 
 	public boolean contains(Point2D point) {
+		if (point == null)
+			throw new IllegalArgumentException("argument can't be null");
+		if (this.root == null)
+			return false;
 		return contains(this.root, point, true);
 	}
 
@@ -47,8 +53,11 @@ public class KdTree {
 	}
 
 	public Iterable<Point2D> range(RectHV rect) {
+		if (rect == null)
+			throw new IllegalArgumentException("argument can't be null");
+		if (this.root == null)
+			return null;
 		List<Point2D> points = new ArrayList<>();
-		if (rect.xmin() != 0.00 && rect.xmax() != 0.00) {
 			if (rect.xmin() < this.root.point.x() && rect.xmax() <= this.root.point.x()) {
 				if (rect.distanceSquaredTo(this.root.point) == 0.00)
 					points.add(this.root.point);
@@ -60,7 +69,6 @@ public class KdTree {
 			} else {
 				range(this.root, rect, points);
 			}
-		}
 		return points;
 	}
 
@@ -78,28 +86,30 @@ public class KdTree {
 	public Point2D nearest(Point2D queryP) {
 		if (queryP == null)
 			throw new IllegalArgumentException("argument can't be null");
-		if (queryP.x() != 0.00 && queryP.y() != 0.00) {
-			return nearest(this.root, queryP, this.root.point);
-		}
-		return null;
+		if (this.root == null)
+			return null;
+		return nearest(this.root, queryP, this.root.point);
 	}
 
 	private Point2D nearest(Node x, Point2D queryP, Point2D nearest) {
 		if (x == null)
 			return nearest;
-		if (nearest != null
-				&& nearest != x.point  && x.rectHV.distanceSquaredTo(queryP) < queryP.distanceSquaredTo(nearest) ) {
+		if (nearest != null && nearest != x.point
+				&& x.rectHV.distanceSquaredTo(queryP) < queryP.distanceSquaredTo(nearest)) {
 			if (x.point.distanceSquaredTo(queryP) < queryP.distanceSquaredTo(nearest)) {
 				nearest = x.point;
 			}
 		}
 		nearest = nearest(x.left, queryP, nearest);
-	//	if(x.right!=null && x.right.point.distanceSquaredTo(queryP) < queryP.distanceSquaredTo(nearest))
+		// if(x.right!=null && x.right.point.distanceSquaredTo(queryP) <
+		// queryP.distanceSquaredTo(nearest))
 		nearest = nearest(x.right, queryP, nearest);
 		return nearest;
 	}
 
 	private void draw(Node x) {
+		if (this.root == null)
+			return;
 		if (x != null) {
 			StdDraw.setPenColor(StdDraw.BLACK);
 			StdDraw.setPenRadius(0.01);
@@ -134,7 +144,7 @@ public class KdTree {
 	private boolean contains(Node x, Point2D point, boolean vertical) {
 		if (x == null)
 			return false;
-		if (x.point == point)
+		if (x.point.equals(point))
 			return true;
 		if (vertical) {
 			if (point.x() < x.point.x()) {
@@ -153,6 +163,8 @@ public class KdTree {
 	}
 
 	private Node insert(Node x, Point2D point, boolean vertical, double min, double max) {
+		if (x != null && x.point.equals(point))
+			return x;
 		if (x == null) {
 			x = new Node(point, vertical);
 			if (vertical)

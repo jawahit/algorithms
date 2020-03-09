@@ -56,6 +56,7 @@ public class PointSET {
 	public Iterable<Point2D> range(RectHV rect) {
 		if(rect == null)
 			throw new IllegalArgumentException("argument can't be null");
+		if(this.root.isEmpty()) return null;
 		Set<Point2D> pInsideBox = new TreeSet<Point2D>();
 		Point2D left = new Point2D(rect.xmin(), rect.ymin());
 		Point2D right = new Point2D(rect.xmax(), rect.ymax());
@@ -73,6 +74,7 @@ public class PointSET {
 	public Point2D nearest(Point2D p) {
 		if(p == null)
 			throw new IllegalArgumentException("argument can't be null");
+		if(this.root.isEmpty()) return null;
 		return nearest(root, p);
 	}
 	
