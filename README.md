@@ -76,9 +76,8 @@
        
        Elementary Symbol Tables
        
-       Week 5: (I)
+       Week 5: (C)
        Balanced Search Trees
-       
        
        Geometric Applications of BSTs
        Assignment: kd-Trees
