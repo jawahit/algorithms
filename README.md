@@ -35,7 +35,7 @@
       11.Game Theory(NS)
       12.NP Complete(NS)
       
-# Algorithms1 & Problem Solving - Princeton University
+# Algorithms1 & Problem Solving - Princeton University - (Completed)
 
    In this sections i have started solving the problems/assignments of week by week schedule from princeton university 
    
@@ -90,7 +90,7 @@
       
    
       
-# Algorithms2 & Problem Solving - Princeton University (Advanced)
+# Algorithms2 & Problem Solving - Princeton University (Advanced) - (in progress)
 
      In this sections i have started solving the problems/assignments of week by week schedule from princeton university
 
