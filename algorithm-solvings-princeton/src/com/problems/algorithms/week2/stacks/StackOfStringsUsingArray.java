@@ -29,7 +29,7 @@ public class StackOfStringsUsingArray<T> implements Iterable<T> {
 	public String pop() {
 		if (currentIndex != -1) {
 			if(currentIndex == (arr.length / 4)) {
-				doHalving(arr.length /2 );
+				resizeArray(arr.length /2 );
 			}
 			String s = this.arr[--currentIndex];
 			this.arr[currentIndex] = null;
@@ -38,7 +38,7 @@ public class StackOfStringsUsingArray<T> implements Iterable<T> {
 		return null;
 	}
 	
-	private void resizeArray(int size) {
+	/*private void resizeArray(int size) {
 		String[] newArr = new String[size];
 		for(int i = 0; i < arr.length - 1; i++) {
 			newArr[i] = arr[i];
@@ -49,6 +49,14 @@ public class StackOfStringsUsingArray<T> implements Iterable<T> {
 	private void doHalving(int size) {
 		String[] newArr = new String[size];
 		for(int i = 0; i < newArr.length - 1; i++) {
+			newArr[i] = arr[i];
+		}
+		arr = newArr;
+	}
+	*/
+	private void resizeArray(int size) {
+		String[] newArr = new String[size];
+		for(int i = 0; i < currentIndex ; i++) {
 			newArr[i] = arr[i];
 		}
 		arr = newArr;

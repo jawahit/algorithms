@@ -20,7 +20,7 @@ public class RangeSearchVisualizer {
 	 public static void main(String[] args) {
 
 	        // initialize the data structures from file
-	        String filename = "/home/jawahar/dev/codes/algorithms/algorithm-solvings-princeton/resources/week5/input1.txt";
+	        String filename = "/home/jawahar/dev/codes/algorithms/algorithm-solvings-princeton/resources/week5/input100K.txt";
 	        In in = new In(filename);
 	        PointSET brute = new PointSET();
 	        KdTree kdtree = new KdTree();

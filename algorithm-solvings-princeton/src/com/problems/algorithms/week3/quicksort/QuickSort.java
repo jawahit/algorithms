@@ -60,12 +60,12 @@ public class QuickSort {
 		}
 	}
 
-	public static void sort(Object[] c, int start, int hiIndex) {
-		if (hiIndex <= start)
+	public static void sort(Object[] c, int start, int end) {
+		if (end <= start)
 			return;
-		int j = partioning(c, start, hiIndex);
+		int j = partioning(c, start, end);
 		sort(c, start, j - 1);
-		sort(c, j + 1, hiIndex);
+		sort(c, j + 1, end);
 	}
 	public static int partioning(Object[] c, int i, int j) {
 		int lowIndex = i;
@@ -88,29 +88,30 @@ public class QuickSort {
 		SortingUtils.exchange((Comparable[]) c, i, hiIndex);
 		return hiIndex;
 	}
+	
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		String[] arr = { "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L",
-//				"E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E",
-//				"Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q",
-//				"Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q",
-//				"U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U",
-//				"I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I",
-//				"C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C",
-//				"K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K",
-//				"S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S",
-//				"O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O",
-//				"R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R",
-//				"T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T",
-//				"I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I",
-//				"N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N",
-//				"G", "E", "X", "A", "M", "P", "L", "E" };
+		String[] arr = { "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L",
+				"E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E",
+				"Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q",
+				"Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q",
+				"U", "I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U",
+				"I", "C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I",
+				"C", "K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C",
+				"K", "S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K",
+				"S", "O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S",
+				"O", "R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O",
+				"R", "T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R",
+				"T", "I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T",
+				"I", "N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I",
+				"N", "G", "E", "X", "A", "M", "P", "L", "E", "Q", "Q", "U", "I", "C", "K", "S", "O", "R", "T", "I", "N",
+				"G", "E", "X", "A", "M", "P", "L", "E" };
 		// String[] arr = {
 		// "B","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R","W","R","B","W","R","B","W","R","B","W","R"};
-		Integer[] arr = { 2, 4, 1, 5, 3 };
+	//	Integer[] arr = { 2, 4, 1, 5, 3 };
 		int sum = 0;
 		int limit = 10;
 		for (int i = 0; i < limit; i++) {

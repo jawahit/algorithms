@@ -42,7 +42,7 @@ public class SampleClientFaster {
 			for (LineSegment segment : collinear.segments()) {
 				if(segment!=null) {
 					StdOut.println(segment);
-					Thread.sleep(4000);
+					// Thread.sleep(4000);
 					segment.draw();				
 				}
 			}

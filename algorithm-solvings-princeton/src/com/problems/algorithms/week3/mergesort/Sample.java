@@ -23,6 +23,13 @@ public class Sample {
 		System.out.println(sum/2);
 		recursivePrint(0, 4);
 		System.out.println(Double.NEGATIVE_INFINITY);
+		int[] chars = new int[128];
+		char c = 'Z';
+		chars[c]++;
+		chars[c]++;
+		
+		System.out.println(chars[c]);
+
 	
 
 	}

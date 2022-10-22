@@ -45,7 +45,7 @@ public class QuickSelect {
 		// 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 		// A C E E G I I K L M N O P Q Q R S T U X
 		System.out.println(findKthSmallest(arr, 10));
-		System.out.println(findKthLargest(arr, 3));
+		System.out.println(findKthLargest(arr, 1));
 	}
 
 }
