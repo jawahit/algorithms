@@ -8,7 +8,9 @@ import edu.princeton.cs.algs4.IndexMinPQ;
 import edu.princeton.cs.algs4.Queue;
 
 /**
- * My own implementation of Prims Minimum Spannig tree eager way
+ * My own implementation of Prim's Minimum Spanning tree eager way
+ * 
+ * TODO: submit this solution to Princeton University , before that analyze the run time complexity
  * 
  * 
  * @author Thangaraj Jawahar

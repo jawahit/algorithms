@@ -12,7 +12,7 @@ package com.problems.algorithms2.week2.shortestpath;
  * 
  *
  */
-public class DirectedEdge {
+public class DirectedEdge implements Comparable<DirectedEdge>{
 	
 	private int v;
 	private int w;
@@ -39,6 +39,12 @@ public class DirectedEdge {
 	@Override
 	public String toString() {
 		return "DirectedEdge [v=" + v + ", w=" + w + ", weight=" + weight + "]";
+	}
+
+	@Override
+	public int compareTo(DirectedEdge o) {
+		// TODO Auto-generated method stub
+		return Double.compare(this.weight, o.weight);
 	}
 
 }
